@@ -1,0 +1,20 @@
+name: CurseCraft
+version: 0.0.3
+author: Towja
+main: com.ausminersunited.Main
+description: A plugin that adds a magic system to minecraft allowing you to place long-term spells on other players.
+commands:
+  cursecraft:
+    description: Information about the Cursecraft plugin.
+    usage: /cursecraft
+    permission: cursecraft.info
+    permission-message: §4You need the §ccursecraft.info §4permission to run that command.
+permissions:
+  cursecraft.*:
+    description: Gives all cursecraft permissions.
+    default: op
+    children:
+      cursecraft.info: true
+  cursecraft.info:
+    description: Allows the use of the /cursecraft command.
+    default: true
