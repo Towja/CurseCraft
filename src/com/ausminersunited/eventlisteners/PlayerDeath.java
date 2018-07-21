@@ -14,11 +14,12 @@ public class PlayerDeath implements Listener {
     public void OnPlayerDeath(PlayerDeathEvent event) {
         Player player = event.getEntity();
         if(player.isDead()) {
-            if (player.getKiller() instanceof Player) {
-                // Drop skull on player death (when killed)
+            if (player.getKiller() != null) { // Check if player was killed by another player, rather than other means
+                // Drop player's skull on player death (when killed)
                 ItemStack skullItem = new ItemStack(Material.SKULL_ITEM, 1, (short) 3);
-                SkullMeta metaSkull = (SkullMeta) skullItem.getItemMeta();
-                metaSkull.setOwningPlayer(player);
+                SkullMeta skullMeta = (SkullMeta) skullItem.getItemMeta();
+                skullMeta.setOwningPlayer(player);
+                skullItem.setItemMeta(skullMeta);
                 player.getWorld().dropItemNaturally(player.getLocation(), skullItem);
             }
         }
